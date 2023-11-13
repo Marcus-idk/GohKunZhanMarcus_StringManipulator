@@ -1,9 +1,7 @@
-// String Manipulation
 module.exports = {
-    
     // function to generate random string, inclusive of parantheses
     generateRandomString() {
-        const maxLength = 10;
+        const maxLength = 20;
         const brackets = '()';
         const characters = 'abcdefghijklmnopqrstuvwxyz';
         let randomString = '';
