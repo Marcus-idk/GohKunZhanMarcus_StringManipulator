@@ -1,5 +1,9 @@
 module.exports = {
-    // function to generate random string, inclusive of parantheses
+    /**
+        Parameters: null
+        Return: random string, inclusive of parantheses
+        Additional info: null
+    **/
     generateRandomString() {
         const maxLength = 20;
         const brackets = '()';
@@ -19,7 +23,11 @@ module.exports = {
         return randomString;
     },
 
-    // function to check if string is valid
+    /**
+        Parameters: string s
+        Return: bool
+        Additional info: uses a simple counting method to validate if a string is valid
+    **/
     isValid(s) {
         let c = 0;
         for (let i = 0; i < s.length; i++) {
@@ -30,7 +38,11 @@ module.exports = {
         }
         return c === 0;
     },
-
+    /**
+        Parameters: string s
+        Return: [a, b] -> [min number of removals before string is valid, array of all valid string permutations]
+        Additional info: removes min number of parentheses to make string valid
+    **/
     // function to remove min number of parentheses to make string valid
     removeInvalidParentheses(s) {
         let foundMin = false;
@@ -76,5 +88,40 @@ module.exports = {
         }
 
         return [min, res];
-    }
+    },
+
+    root: {
+        children: {},
+        isEndOfWord: false
+    },
+    /**
+        Parameters: string word
+        Return: null
+        Additional info: adds word into the trie data structure, storing it for future reference
+    **/
+    add(word) {
+        let current = this.root;
+        for (const char of word) {
+            if (!current.children[char]) {
+                current.children[char] = { children: {}, isEndOfWord: false };
+            }
+            current = current.children[char];
+        }
+        current.isEndOfWord = true;
+    },
+    /**
+        Parameters: string word
+        Return: bool
+        Additional info: searches for word in the trie data structure in optimal time
+    **/
+    search(word) {
+        let current = this.root;
+        for (const char of word) {
+            if (!current.children[char]) {
+                return false;
+            }
+            current = current.children[char];
+        }
+        return current.isEndOfWord;
+    },
 }

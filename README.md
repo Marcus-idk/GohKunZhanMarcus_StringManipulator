@@ -1,5 +1,6 @@
-# Assignment 1 - StringManipulator.js
-This module addressess complex string manipulations with a focus on validating parentheses.
+# Assignment 1
+## Removing Invalid Parentheses - Algorithm
+This part of the module addressess complex string manipulations with a focus on validating parentheses.
 
 Problem statement:
     Given a string s that contains parentheses and lowercase letters, remove the minimum number of invalid parentheses to make the input string valid.
@@ -25,7 +26,7 @@ Problem statement:
 
 ### Example 3:
     Input: s = ")("
-    Output: [2, [""]]d
+    Output: [2, [""]]
     Explanation: The only way for it to be valid is to remove everything
 
 ## Solving the Problem
@@ -44,7 +45,7 @@ After discussing that the problem is indeed $hard$, we will result in using an o
 
 2) Branch Pruning: The recursion stops early when a valid string is found, since we know that thats the minimum number of required removals
 
-3) Efficiently checking for validity: A very common yet efficient method to check for validity, is to use a stack as shown in the function
+3) Efficiently checking for validity: A very common yet efficient method to check for validity, is to use a counting method as shown in the function
 
 ## Functions
 
@@ -80,34 +81,39 @@ console.log(removeInvalidParentheses(")("));  // Output: [2, [""]]
 ```
 
 
-# Assignment 1 - Trie.js
-This module addresses the problem when storing large amount of strings, this goes more into the idea of data structures rather than algorithms as discussed in the previous section.
+## Trie - data structure
+This part of the module addresses the problem when storing large amount of strings, this goes more into the idea of data structures rather than algorithms as discussed in the previous section.
 
 Suppose that we wish to store and check if a particular string exists.
 Here are a few data structures we can use:
 
 Let $n$ be the number of strings, and $l$ to be the expected string length
 ### Arrays of Arrays
-* Time complexity: $O(n)$
-* Space complexity: $O(n * l)$
+Time complexity: $O(n)$
+
+Space complexity: $O(n * l)$
 
 ### Hash Maps
-* Time complexity: $O(l)$, unlike numbers, every char in a string needs to be processed once to their respective hashes, thus hashing strings are non-trivial
-* Space complexity: $O(n * l)$
+Time complexity: $O(l)$, unlike numbers, every char in a string needs to be processed once to their respective hashes, thus hashing strings are non-trivial
+
+Space complexity: $O(n * l)$
 
 ### Binary Trees
-* Time complexity: $O(l * logn)$
-* Space complexity: $O(n * l)$
+Time complexity: $O(l * logn)$
+
+Space complexity: $O(n * l)$
 
 ## My solution - using a Trie
     A trie is a specialized data structure that provides a balanced of time and space efficiency specfically for storing strings.
    
 ![Trie Image](./images/trie.png)
 
-    Time complexity: $O(l)$, since the trie just has to go through the string once
-    Space complexity:
-        Worst case: $O(n * k)$, where k is the length of the longest string
-        Average case: $O(k)$
+Time complexity: $O(l)$, since the trie just has to go through the string once
+
+Space complexity:
+Worst case: $O(n * k)$, where k is the length of the longest string
+
+Average case: $O(k)$
 
 ## Functions
 
