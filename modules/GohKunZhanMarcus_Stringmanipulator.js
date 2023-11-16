@@ -124,4 +124,30 @@ module.exports = {
         }
         return current.isEndOfWord;
     },
+    /**
+        Parameters: string word
+        Return: null
+        Additional info: removes the word from the Trie data structure
+    **/
+    remove(word) {
+        // if word does not exist, stop
+        if (!this.search(word)) return;
+        let curr = this.root;
+        const stack = [];
+
+        // traverse the Trie to the last char of the word
+        for (const char of word) {
+            stack.push([curr, char]);
+            curr = curr.children[char];
+        }
+        
+        curr.isEndOfWord = false;
+
+        // simple backtracking, cleaning up extra words
+        while (stack.length > 0 && !curr.isEndOfWord && Object.keys(curr.children).length === 0) {
+            const [par, char] = stack.pop();
+            delete par.children[char];
+            curr = par;
+        }
+    }
 }
