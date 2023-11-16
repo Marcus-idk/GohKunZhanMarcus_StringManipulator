@@ -41,7 +41,7 @@ The process of solving this problem has quite a few challenges.
 ## My Solution
 After discussing that the problem is indeed $hard$, we will result in using an optimized brute force approach.
 
-1) Recursive brute force: I implemented a method that tries removing parenthesis and checks for validity at every index of the string.
+1) Recursive brute force (Dynamic Programming): I implemented a method that tries removing parenthesis and checks for validity at every index of the string.
 
 2) Branch Pruning: The recursion stops early when a valid string is found, since we know that thats the minimum number of required removals
 
@@ -63,11 +63,11 @@ console.log(randomstr);
     Checks if string s is valid/has balanced parentheses.
     Can be used in removeInValidParentheses function to check validity.
 ```
-console.log(isValid("()"));       // Output: true
-console.log(isValid("(()"));      // Output: false
-console.log(isValid("()()"));     // Output: true
-console.log(isValid("(())"));     // Output: true
-console.log(isValid(")("));       // Output: false
+console.log(isValid("()"));       // true
+console.log(isValid("(()"));      // false
+console.log(isValid("()()"));     // true
+console.log(isValid("(())"));     // true
+console.log(isValid(")("));       // false
 ```
 
 ### removeInvalidParentheses(s)
@@ -128,6 +128,18 @@ trie.add("can");
 ### search(word)
     Searches for the input word inside the trie and returns a boolean, indicating if the string exists
 ```
-console.log(trie.search("cat"));  // Output: true
-console.log(trie.search("cap"));  // Output: false
+console.log(trie.search("cat"));  // true
+console.log(trie.search("cap"));  // false
+```
+
+### remove(word)
+    Removes the input word from the trie, and any corresponding leftover prefixes
+```
+trie.add('test');
+trie.add('testing');
+trie.search('test');    // true
+trie.search('testing'); // true
+trie.remove('test');
+trie.search('test')     // false
+trie.search('testing'); // true
 ```
