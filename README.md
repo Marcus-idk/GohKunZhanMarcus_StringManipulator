@@ -89,7 +89,7 @@ Here are a few data structures we can use:
 
 Let $n$ be the number of strings, and $l$ to be the expected string length
 ### Arrays of Arrays
-Time complexity: $O(n)$
+Time complexity: $O(n * l)$
 
 Space complexity: $O(n * l)$
 
